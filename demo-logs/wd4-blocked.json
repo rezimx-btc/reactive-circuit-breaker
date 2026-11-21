@@ -1,0 +1,1 @@
+{"schema_version":1,"success":false,"data":null,"errors":[{"level":"error","code":"cast.error","message":"Failed to estimate gas: server returned an error response: error code 3: execution reverted, data: \"0x9e87fac8\": Paused"}],"warnings":[]}
