@@ -1,0 +1,10 @@
+.env
+deployments.json
+deployments.json.bak
+contracts/out/
+contracts/cache/
+contracts/lib/
+agent/state.json
+agent/node_modules/
+*.log
+.local/

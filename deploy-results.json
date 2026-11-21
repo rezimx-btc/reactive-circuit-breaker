@@ -1,0 +1,83 @@
+{
+  "network": "testnet-only",
+  "deployer": "0xc92Ba015a2b5Cf53D3BDe3D3b074616F43fCc0c7",
+  "baseSepolia": {
+    "chainId": 84532,
+    "vault": "0x736749e20AB19A2E84299FA4794f883D6Af7BBF5",
+    "verdictOracle": "0x156C23756e01EF3E01C87cdcB04f9687b0179C8A"
+  },
+  "lasna": {
+    "chainId": 5318007,
+    "circuitBreaker": "0x2381c5c6730a09b3e0750fe84044d3d9a039fc42"
+  },
+  "steps": [
+    {
+      "step": "0-faucet-swap-0.012ETH-to-lREACT",
+      "transactionHash": "0xf51725dd96270a90d5487c7d5710f65a4f7f99000d7bf0634156ff28b6befa9c",
+      "blockNumber": 61786203,
+      "gasUsed": 24794,
+      "status": "0x1"
+    },
+    {
+      "step": "1-vault-deploy",
+      "transactionHash": "0xf04b0c35f9a74c7e5047cf4b9f06988d4c20e371e4cb0555e8c504250fb4af86",
+      "blockNumber": 61786334,
+      "gasUsed": 1165944,
+      "contractAddress": "0x736749e20ab19a2e84299fa4794f883d6af7bbf5",
+      "deployedTo": "0x736749e20AB19A2E84299FA4794f883D6Af7BBF5",
+      "status": "0x1"
+    },
+    {
+      "step": "1b-oracle-deploy",
+      "transactionHash": "0x664ea9cf417ba22853d95ea08da9861314ad4e3f72df27b4fc74818e5e1ab4e1",
+      "blockNumber": 61786359,
+      "gasUsed": 984937,
+      "contractAddress": "0x156c23756e01ef3e01c87cdcb04f9687b0179c8a",
+      "deployedTo": "0x156C23756e01EF3E01C87cdcB04f9687b0179C8A",
+      "status": "0x1"
+    },
+    {
+      "step": "2-breaker-deploy-lasna",
+      "transactionHash": "0x96e00e2b7ddc35d50ec4e2747155415f467f4493d645bcafff06d60c13a71c02",
+      "blockNumber": 8906993,
+      "gasUsed": 1916845,
+      "contractAddress": "0x2381c5c6730a09b3e0750fe84044d3d9a039fc42",
+      "status": "0x1"
+    },
+    {
+      "step": "3a-wire-setCircuitBreaker",
+      "transactionHash": "0x3d6adf9d3ebcd1c3ad23c48bce183eaa7118a6d88144620a5d59c125f2afff91",
+      "blockNumber": 61787392,
+      "gasUsed": 45298,
+      "status": "0x1"
+    },
+    {
+      "step": "3b-wire-setVerdictOracle",
+      "transactionHash": "0xb8e4f564b6b835e5f80e13b5844eafbc517d0ae82ea3d27be0d03f052e2c9c68",
+      "blockNumber": 61787419,
+      "gasUsed": 45320,
+      "status": "0x1"
+    },
+    {
+      "step": "4-subscribe",
+      "transactionHash": "0xed93ff07669c962b43ddf22d21352be0a2407dd45488e26645d16fba5601158a",
+      "blockNumber": 8907005,
+      "gasUsed": 38204,
+      "status": "0x1"
+    },
+    {
+      "step": "5a-reserve-breaker-0.5-lREACT",
+      "transactionHash": "0xa8a89b422ffd602aefa9f4d4f6011fa7f33b254911ec7d622e1a5949dcd4d49a",
+      "blockNumber": 8907011,
+      "gasUsed": 51795,
+      "status": "0x1"
+    },
+    {
+      "step": "5b-reserve-vault-callback-0.005-ETH",
+      "transactionHash": "0xda0c76b64abe54c6c370f2b409c88fa7cc8abf6e017234ecfecb3a7b9d90aa6b",
+      "blockNumber": 61787487,
+      "gasUsed": 51889,
+      "status": "0x1"
+    }
+  ]
+}
