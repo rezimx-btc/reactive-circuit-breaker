@@ -1,0 +1,39 @@
+Script started on 2026-11-21 16:44:40+00:00 [COMMAND="bash docs/demo.sh" <not executed on terminal>]
+vault=0x736749e20AB19A2E84299FA4794f883D6Af7BBF5 oracle=0x156C23756e01EF3E01C87cdcB04f9687b0179C8A breaker=0x2381c5c6730a09b3e0750fe84044d3d9a039fc42 deployer=0xc92Ba015a2b5Cf53D3BDe3D3b074616F43fCc0c7
+users: 0x0508b4A517f97c4C9Ce03D4B2543bE88C9b7B293 0xA1dEd1B3fEf5A013362044BB468E2d732Ea55F50 0x43b5Ca33396b55B4e6ae1D339E021B9Cf37E5860
+fund-0x0508b4A517f97c4C9Ce03D4B2543bE88C9b7B293: 0x1abf97ad079e4cceaf032060060ba4571b6bff506102d0c449741016663f162d
+fund-0xA1dEd1B3fEf5A013362044BB468E2d732Ea55F50: 0x2d620a5bc8b51144314d2e75963b89150bf25877125cdf7c544640fb1e401da2
+fund-0x43b5Ca33396b55B4e6ae1D339E021B9Cf37E5860: 0xb3abbc328597b0c97abbf8a0e663d03949602d53c892e417056cbcf923bf3d18
+users funded (0.0052 ETH gas each)
+deposit-0x0508b4A517f97c4C9Ce03D4B2543bE88C9b7B293: 0x55309d64df3c1b032b64e3abfb8c3df9782ac86be1adb58e36f6ac6a4e64c47f
+prior-0x0508b4A517f97c4C9Ce03D4B2543bE88C9b7B293: 0xd7948fd41e413733672108389881edb6b924e4195af80289b3ec724e8f9a3d6f
+deposit-0xA1dEd1B3fEf5A013362044BB468E2d732Ea55F50: 0x98d685e62eac2eea554a7bb79bce0b416dccd746ed5833faf7528e1581e829b4
+prior-0xA1dEd1B3fEf5A013362044BB468E2d732Ea55F50: 0x1525aa0a4b22762ebb6ff0756a08aab2bf0c86215796ff45468b672bdbf14d3c
+deposit-0x43b5Ca33396b55B4e6ae1D339E021B9Cf37E5860: 0xc9319f88e62e340140e7ad3310101d641ebee75d8ebd891b6882b3994d20f818
+prior-0x43b5Ca33396b55B4e6ae1D339E021B9Cf37E5860: 0x063b14e4b8d25feb70874dbfce8f45abc350aa564ea105b892d0bf487c9f21af
+--- setup done: 3 known users, 0.0045 ETH each in vault ---
+--- waiting 75s so prior withdrawals leave the 60s window ---
+--- 1. normal withdrawal (0.0005 ETH, user 1) — should pass, no flag ---
+normal-wd: 0x61a84a07a851c341b1a6baf0b4e0475f2dbfbaf0da6caab4e8526c0f7115d4c3
+breaker flagged? false
+--- 2. legitimate burst: 0.002 ETH x3, ~25s apart ---
+burst-wd1: 0x2c48f2b02e807c69393a60833386b1aba0dfb75d9b3b60fdff73312947ed04b8
+burst-wd2: 0xf2cad77b86a25b2601fe50c4383ea44e557703e2e811853f8bc651825dfdaa42
+burst-wd3: 0xb90cb16f420df19327b28d7635cb7bbac2c8935c23a30489387bd332370a3932
+waiting for the reactive tx + callback (polling paused, up to ~150s)...
+  poll 1: vault paused? true
+breaker flagged? true
+vault paused?   true
+--- 4th withdrawal while paused — should REVERT ---
+wd4-blocked: 
+--- 3. AI verdict agent (one pass) ---
+2026-11-21T16:48:00.691Z scanning Lasna blocks 8905310..8907310: 1 BurstFlagged
+2026-11-21T16:48:00.692Z burst #1 flagged: volume 6000000000000000 wei, tx 0x9e266a4e40d05b4fe019ce69168611bdebb74d9763937b34ee858907950a49e5
+Error: eth_getLogs: {"code":-32614,"message":"eth_getLogs is limited to a 200 range"}
+    at rpc (file:///home/hatch/workspace/dorahacks-reactive-omni-buildathon/agent/index.mjs:53:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handleBurst (file:///home/hatch/workspace/dorahacks-reactive-omni-buildathon/agent/index.mjs:139:15)
+    at async once (file:///home/hatch/workspace/dorahacks-reactive-omni-buildathon/agent/index.mjs:208:5)
+    at async main (file:///home/hatch/workspace/dorahacks-reactive-omni-buildathon/agent/index.mjs:216:3)
+
+Script done on 2026-11-21 16:48:03+00:00 [COMMAND_EXIT_CODE="1"]

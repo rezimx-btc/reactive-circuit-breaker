@@ -1,0 +1,64 @@
+Script started on 2026-11-21 16:51:31+00:00 [COMMAND="bash docs/demo.sh" <not executed on terminal>]
+vault=0x736749e20AB19A2E84299FA4794f883D6Af7BBF5 oracle=0x156C23756e01EF3E01C87cdcB04f9687b0179C8A breaker=0x2381c5c6730a09b3e0750fe84044d3d9a039fc42 deployer=0xc92Ba015a2b5Cf53D3BDe3D3b074616F43fCc0c7
+users: 0x6E5A31D4e1616eb48a8E8A718306bdd4e64A752c 0x7BaBA4d66527235ce35c4170A8e8881B769208Db 0x61771ED4702fe69bcE3B93b07D0D2e5B4290A233
+fund-0x6E5A31D4e1616eb48a8E8A718306bdd4e64A752c: 0x6296abeff1eec1627c3a1794db52aae7a52b9ce39d343224d1715659c683e8bb
+fund-0x7BaBA4d66527235ce35c4170A8e8881B769208Db: 0x3a4356763c08e3ec0611e35998350704e4b27d3eaf28ee7213548c6e697ff1c3
+fund-0x61771ED4702fe69bcE3B93b07D0D2e5B4290A233: 0xfd785a1b193e68918f0b43ed6aecfa14db299a4928c32f414c72b51d9484987d
+users funded (0.0051 ETH gas each)
+deposit-0x6E5A31D4e1616eb48a8E8A718306bdd4e64A752c: 0xa1365bbf12212bb4d6f70d86c34fcb165227df8e118ff9c803997874466cf87c
+prior-0x6E5A31D4e1616eb48a8E8A718306bdd4e64A752c: 0x9c61f6d9718e22cfdbc96a1946668757279897f9cabfce72330632aba45ef711
+deposit-0x7BaBA4d66527235ce35c4170A8e8881B769208Db: 0x433d266be9949296e832ac34e9c752c87ea3171ff04946e085b02fa98fba6e65
+prior-0x7BaBA4d66527235ce35c4170A8e8881B769208Db: 0x42be4d62245f19c30372a39290981d96c766cc373492c04657bb701df6f3c2d8
+deposit-0x61771ED4702fe69bcE3B93b07D0D2e5B4290A233: 0x206e8efdae13c6aacd7225f5034773c078c2231b2d7345087e4d47eb38fd5d71
+prior-0x61771ED4702fe69bcE3B93b07D0D2e5B4290A233: 0xacb2ba5a16cc2e0df44bef68e18f51effbac00f8caaa80b016c201a6e121290e
+--- setup done: 3 known users, 0.0045 ETH each in vault ---
+--- waiting 75s so prior withdrawals leave the 60s window ---
+--- 1. normal withdrawal (0.0005 ETH, user 1) — should pass, no flag ---
+normal-wd: 0xc03f897cd29420df4020ba936db7d4e7b2564dc41e98f35a585ad9043e5ae514
+breaker flagged? false
+--- 2. legitimate burst: 0.002 ETH x3, ~25s apart ---
+burst-wd1: 0x2473d0d57bcab6dd3cca4a130c7384c17738f3230095a7be513b0ecc3b76a02f
+burst-wd2: 0x40facdfaf849115c050c9c453b91f1758e10ed6619b53a6b9556972d5ebed1fc
+burst-wd3: 0x8e07f8a0a7bdf1e8ba23ade136948422d469d2df3163ce2f27be9e8ffd505d82
+waiting for the reactive tx + callback (polling paused, up to ~150s)...
+  poll 1: vault paused? true
+breaker flagged? true
+vault paused?   true
+--- 4th withdrawal while paused — should REVERT ---
+wd4-blocked: (reverted: Failed to estimate gas: server returned an error response: error code )
+--- 3. AI verdict agent (one pass) ---
+2026-11-21T16:54:56.191Z scanning Lasna blocks 8905702..8907702: 2 BurstFlagged
+2026-11-21T16:54:56.193Z burst #1 flagged: volume 6000000000000000 wei, tx 0x9e266a4e40d05b4fe019ce69168611bdebb74d9763937b34ee858907950a49e5
+2026-11-21T16:54:57.818Z burst #1: verdict already on-chain (LEGITIMATE), skipping
+2026-11-21T16:54:57.818Z burst #2 flagged: volume 6000000000000000 wei, tx 0x4afbf412b0b7612e8bbb15b43b36c86d376f0c526b7dfc3e3049b37cd006588f
+2026-11-21T16:55:08.090Z burst #2: LEGITIMATE via groq:openai/gpt-oss-20b — 69s span and no single sender exceeds 80% of volume.
+2026-11-21T16:55:08.090Z   features: {"burstId":2,"nWithdrawals":4,"nSenders":3,"nFreshSenders":3,"totalWei":"6500000000000000","maxSingleWei":"2000000000000000","dominantShare":0.3,"dominantSenderShare":0.38,"spanSeconds":69,"windowVolumeWei":"6000000000000000"}
+2026-11-21T16:55:11.178Z submitVerdict: ok=true
+
+blockHash            0xa0051bcaf4c3c6bd149e7847004bac9aa9ca4861c1d115334a481241059f9f6d
+blockNumber          61791216
+contractAddress      
+cumulativeGasUsed    661148
+effectiveGasPrice    5010000
+from                 0xc92Ba015a2b5Cf53D3BDe3D3b074616F43fCc0c7
+gasUsed              172131
+logs                 [{"address":"0x156c23756e01ef3e01c87cdcb04f9687b0179c8a","topics":["0x383e839544e8ac08ec15cf110ce8855623b5f46de8a6c81dc0b56295e0b0b37c","0x0000000000000000000000000000000000000000000000000000000000000002","0x000000000000000000000000c92ba015a2b5cf53d3bde3d3b074616f43fcc0c7"],"data":"0x000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000034363973207370616e20616e64206e6f2073696e676c652073656e646572206578636565647320383025206f6620766f6c756d652e000000000000000000000000","blockHash":"0xa0051bcaf4c3c6bd149e7847004bac9aa9ca4861c1d115334a481241059f9f6d","blockNumber":"0x3aedbf0","blockTimestamp":"0x6b01ccf0","transactionHash":"0x26b28a71c1cf25d08c04774101aa2b2e42209508c538f657d0b3085e4034af9c","transactionIndex":"0x5","logIndex":"0x12","removed":false,"blockTimestampMs":"0x1a1ff088980"},{"address":"0x736749e20ab19a2e84299fa4794f883d6af7bbf5","topics":["0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa","0x000000000000000000000000156c23756e01ef3e01c87cdcb04f9687b0179c8a"],"data":"0x","blockHash":"0xa0051bcaf4c3c6bd149e7847004bac9aa9ca4861c1d115334a481241059f9f6d","blockNumber":"0x3aedbf0","blockTimestamp":"0x6b01ccf0","transactionHash":"0x26b28a71c1cf25d08c04774101aa2b2e42209508c538f657d0b3085e4034af9c","transactionIndex":"0x5","logIndex":"0x13","removed":false,"blockTimestampMs":"0x1a1ff088980"}]
+logsBloom            0x04000000000004000000002000000000000000000000000080000000000000000000210000000000000000000000020000000000000000000000000000000000000200000000000000000000000000000000000000000000000000008000000000000000000
+2026-11-21T16:55:17.383Z clearFlag on Lasna: ok=true
+
+blockHash            0xedee1806e61dec6a03b4c6bebb700d51d7ddf0e3822fe6deaa99fb0e1cd54260
+blockNumber          8907726
+contractAddress      
+cumulativeGasUsed    0
+effectiveGasPrice    0
+from                 0xc92Ba015a2b5Cf53D3BDe3D3b074616F43fCc0c7
+gasUsed              24872
+logs                 [{"address":"0x2381c5c6730a09b3e0750fe84044d3d9a039fc42","topics":["0x84f0d6489a347ceb1e4e78e9874ef1b7cc4066262e3a111b74f3dc21f86f5503","0x0000000000000000000000000000000000000000000000000000000000000002"],"data":"0x","blockHash":"0xedee1806e61dec6a03b4c6bebb700d51d7ddf0e3822fe6deaa99fb0e1cd54260","blockNumber":"0x87ebce","blockTimestamp":"0x0","transactionHash":"0x794adc190a6d20631be9f7b18f12dd667b6fd30d1429ea46f03f95695840bf67","transactionIndex":"0x1","logIndex":"0x1","removed":false}]
+logsBloom            0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+vault paused after verdict? false
+--- withdrawal resumes ---
+resume-wd: 0x0a3b854a29b2a092b23c85c08815dc3b354a7e681d4179a7168f48f5bb624084
+DEMO DONE — results in demo-results.json
+wrote demo-results.json
+
+Script done on 2026-11-21 16:55:29+00:00 [COMMAND_EXIT_CODE="0"]
